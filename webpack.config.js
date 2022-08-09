@@ -5,16 +5,17 @@ module.exports = {
   entry: './src/',
   mode: 'development',
   devServer: {
+    // if 404 it serves index as an answer
     historyApiFallback: true,
     open: true,
     compress: true,
     port: 8080,
     hot: true,
   },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'mybundle.js'
-  },
+  // output: {
+  //   path: path.resolve(__dirname, 'dist'),
+  //   filename: 'mybundle.js'
+  // },
   module: {
     rules: [
       {
@@ -45,6 +46,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: "React App",
       template: path.join(__dirname, "public", "index.html"),
     }),
   ],
