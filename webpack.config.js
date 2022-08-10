@@ -27,7 +27,8 @@ module.exports = {
           options: {
             name: '[name]-[hash].[ext]',
             outputPath: 'img/',
-            publicPath: 'img/'
+            publicPath: 'img/',
+            esModule: false,
           }
         }
       },
@@ -82,7 +83,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "My React App 2022",
       template: path.join(__dirname, "src", "index.html"),
-      template: 'src/index.html'
+      template: 'src/index.html',
+      hash: true
     }),
     new HtmlWebpackInlineSVGPlugin({
       runPreEmit: true,
