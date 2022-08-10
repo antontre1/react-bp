@@ -1,8 +1,9 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 
 module.exports = {
-  entry: './src/',
+  entry: ['./src/',],
   mode: 'development',
   devServer: {
     // if 404 it serves index as an answer
@@ -12,12 +13,41 @@ module.exports = {
     port: 8080,
     hot: true,
   },
-  // output: {
-  //   path: path.resolve(__dirname, 'dist'),
-  //   filename: 'mybundle.js'
-  // },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'mybundle.js',
+    clean: true,
+  },
   module: {
     rules: [
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name]-[hash].[ext]',
+            outputPath: 'img/',
+            publicPath: 'img/',
+            esModule: false,
+          }
+        }
+      },
+      // {
+      //   test: /\.(png|jpg)$/i,
+      //   use: {
+      //     loader: 'file-loader',
+      //     options: {
+      //       name: '[name].[ext]',
+      //       outputPath: 'img/',
+      //       publicPath: 'img/'
+      //     }
+      // },
+      // {
+        // type: 'asset/resource',
+        // generator: {
+        //     filename: '[name]-[hash][ext]'
+        // }
+      // },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -39,6 +69,11 @@ module.exports = {
           "sass-loader",
         ],
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+
     ]
   },
   resolve: {
@@ -46,8 +81,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "React App",
-      template: path.join(__dirname, "public", "index.html"),
+      title: "My React App 2022",
+      template: path.join(__dirname, "src", "index.html"),
+      template: 'src/index.html',
+      hash: true
     }),
+    new HtmlWebpackInlineSVGPlugin({
+      runPreEmit: true,
+      inlineAll: true,
+    })
   ],
 }
