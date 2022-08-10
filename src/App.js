@@ -1,6 +1,6 @@
 import React from 'react'
 import Bell from './bell.svg'
-import avatar from "./avatar.png"
+import avatar from "./img/avatar.png"
 
 function App() {
   return (
