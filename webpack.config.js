@@ -28,7 +28,7 @@ module.exports = {
             name: '[name]-[hash].[ext]',
             outputPath: 'img/',
             publicPath: 'img/',
-            esModule: false,
+            esModule: true,
           }
         }
       },
