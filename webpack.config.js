@@ -11,8 +11,7 @@ module.exports = {
     open: true,
     compress: true,
     port: 8080,
-    hot: true,
-    clean: true
+    hot: true
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -34,33 +33,34 @@ module.exports = {
         }
       },
       // {
-      //   test: /\.(png|jpg)$/i,
-      //   use: {
-      //     loader: 'file-loader',
-      //     options: {
-      //       name: '[name].[ext]',
-      //       outputPath: 'img/',
-      //       publicPath: 'img/'
-      //     }
-      // },
+        //   test: /\.(png|jpg)$/i,
+        //   use: {
+          //     loader: 'file-loader',
+          //     options: {
+            //       name: '[name].[ext]',
+            //       outputPath: 'img/',
+            //       publicPath: 'img/'
+            //     }
+            // },
       // {
         // type: 'asset/resource',
         // generator: {
-        //     filename: '[name]-[hash][ext]'
-        // }
-      // },
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
-      },
-      {
+          //     filename: '[name]-[hash][ext]'
+          // }
+          // },
+          {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ['@babel/preset-env', '@babel/preset-react']
+              }
+            }
+          },
+          {
         test: /\.s[ac]ss$/i,
+        exclude: /node_modules/,
         use: [
           // Creates `style` nodes from JS strings
           "style-loader",
