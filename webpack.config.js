@@ -4,7 +4,7 @@ const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 
 module.exports = {
   entry: ['./src/',],
-  mode: 'development',
+  mode: 'production',
   devServer: {
     // if 404 it serves index as an answer
     historyApiFallback: true,
@@ -12,6 +12,7 @@ module.exports = {
     compress: true,
     port: 8080,
     hot: true,
+    clean: true
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -83,7 +84,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "My React App 2022",
       template: path.join(__dirname, "src", "index.html"),
-      template: 'src/index.html',
+      // template: 'src/index.html',
       hash: true
     }),
     new HtmlWebpackInlineSVGPlugin({
