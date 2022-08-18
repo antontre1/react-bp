@@ -32,22 +32,6 @@ module.exports = {
           }
         }
       },
-      // {
-      //   test: /\.(png|jpg)$/i,
-      //   use: {
-      //     loader: 'file-loader',
-      //     options: {
-      //       name: '[name].[ext]',
-      //       outputPath: 'img/',
-      //       publicPath: 'img/'
-      //     }
-      // },
-      // {
-        // type: 'asset/resource',
-        // generator: {
-        //     filename: '[name]-[hash][ext]'
-        // }
-      // },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -66,7 +50,7 @@ module.exports = {
           "style-loader",
           // Translates CSS into CommonJS
           "css-loader",
-          // Compiles Sass to CSS
+          // Compiles Sass to CSS - first step to translate SCSS for webpack (here in css)
           "sass-loader",
         ],
       },
@@ -86,16 +70,13 @@ module.exports = {
         use: ['@svgr/webpack'],
       },
 
+
     ]
-  },
-  resolve: {
-    extensions: [ '.js', '.jsx' ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: "My React App 2022",
       template: path.join(__dirname, "src", "index.html"),
-      template: 'src/index.html',
       hash: true
     }),
     new HtmlWebpackInlineSVGPlugin({
